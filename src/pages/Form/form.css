@@ -1,0 +1,32 @@
+.form-container h2 {
+  font-size: 20px;
+  line-height: 28px;
+  color: #4744ae;
+  font-weight: 500;
+  margin-bottom: 26px;
+}
+
+.form-container label {
+  font-size: 13px;
+  line-height: 19px;
+  font-weight: 500px;
+  color: #0f1936;
+  margin-bottom: 50px;
+}
+
+.form-container input {
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  padding: 11px;
+  width: 100%;
+}
+
+.form-container button {
+  background-color: #4744ae;
+  color: white;
+  margin-top: 20px;
+  padding: 9px 55px;
+  cursor: pointer;
+  border: 1 px solid #cccccc;
+  border-radius: 4px;
+}
