@@ -3,7 +3,6 @@ import DisplayListCard from "./displayItemCard";
 import "./displayItem.css";
 
 const DisplayList = (props) => {
-  console.log(props.data);
   return (
     <div className="item-box ">
       {props.data?.map((item) => {
