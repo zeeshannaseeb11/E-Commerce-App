@@ -56,11 +56,10 @@ function Header() {
                     alt="Your Company"
                   />
                 </div>
-           
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
-                  class="h-10 px-5 mr-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800"
+                  className="h-10 px-5 mr-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800"
                   onClick={() => {
                     if (totalQuantity > 0) {
                       navigate("/cart");
@@ -69,18 +68,18 @@ function Header() {
                     }
                   }}
                 >
-                  <span class="mr-2">Cart</span>
-                  <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
+                  <span className="mr-2">Cart</span>
+                  <span className="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
                     {totalQuantity}
                   </span>
                 </button>
                 <button
-                  class="h-10 px-5 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800"
+                  className="h-10 px-5 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800"
                   onClick={() => {
-                    navigate("/yourproducts")
+                    navigate("/yourproducts");
                   }}
                 >
-                  <span class="mr-2">Add Items</span>
+                  <span className="mr-2">Add Items</span>
                 </button>
 
                 {/* Profile dropdown */}
@@ -159,9 +158,7 @@ function Header() {
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden">
-           
-          </Disclosure.Panel>
+          <Disclosure.Panel className="sm:hidden"></Disclosure.Panel>
         </>
       )}
     </Disclosure>

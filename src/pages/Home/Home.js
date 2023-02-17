@@ -1,19 +1,36 @@
-import { useState } from "react";
-import useFetch from "../../hooks/useFetch";
+import { useState, useEffect } from "react";
 import DisplayList from "../DisplayItem/displayItem";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
+import {
+  useGetProductsQuery,
+  useGetProductsByCategoryQuery,
+} from "../../store/services";
 
 const Home = () => {
-  const [url, setUrl] = useState("https://dummyjson.com/products?limit=8");
+  const [category, setCategory] = useState(null);
   const navigate = useNavigate();
+  const { data, error, isLoading, isSuccess } = useGetProductsQuery();
+  const {
+    data: newdata,
+    isLoading: newIsLoading,
+    error: newError,
+    isSuccess: categorySuccess,
+  } = useGetProductsByCategoryQuery(category);
 
-  const { data, loading, error } = useFetch(url);
-  const { products } = data;
+  const isIntLoading = !category || category === "";
+  if (isLoading || newIsLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error || newError) {
+    return <div>{error}</div>;
+  }
+
+  const products =
+    isIntLoading || !categorySuccess ? data?.products : newdata?.products;
 
   const changeHandler = (event) => {
-    console.log(event.target.value);
-    setUrl(`https://dummyjson.com/products/category/${event.target.value}`);
+    setCategory(event.target.value);
   };
 
   return (
@@ -25,7 +42,7 @@ const Home = () => {
               PRODUCTS LIST
             </h1>
             <div>
-              <label for="category" className="font-bold text-1xl">
+              <label htmlFor="category" className="font-bold text-1xl">
                 Search by category
               </label>
               <select
@@ -46,7 +63,6 @@ const Home = () => {
         </header>
         <main>
           <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-            {loading && toast.pending}
             {/* Replace with your content */}
             <div className="px-4 py-6 sm:px-0">
               <DisplayList data={products} />
